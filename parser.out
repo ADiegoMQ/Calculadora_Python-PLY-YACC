@@ -1,0 +1,395 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> sentencia
+Rule 1     sentencia -> NOMBRE IGUAL expresion
+Rule 2     sentencia -> expresion
+Rule 3     expresion -> expresion SUMA expresion
+Rule 4     expresion -> expresion RESTA expresion
+Rule 5     expresion -> expresion MULTIPLICACION expresion
+Rule 6     expresion -> expresion DIVISION expresion
+Rule 7     expresion -> RESTA expresion
+Rule 8     expresion -> PARENTESIS_IZQ expresion PARENTESIS_DER
+Rule 9     expresion -> NUMERO
+Rule 10    expresion -> NOMBRE
+
+Terminals, with rules where they appear
+
+DIVISION             : 6
+IGUAL                : 1
+MULTIPLICACION       : 5
+NOMBRE               : 1 10
+NUMERO               : 9
+PARENTESIS_DER       : 8
+PARENTESIS_IZQ       : 8
+RESTA                : 4 7
+SUMA                 : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+expresion            : 1 2 3 3 4 4 5 5 6 6 7 8
+sentencia            : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . sentencia
+    (1) sentencia -> . NOMBRE IGUAL expresion
+    (2) sentencia -> . expresion
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULTIPLICACION expresion
+    (6) expresion -> . expresion DIVISION expresion
+    (7) expresion -> . RESTA expresion
+    (8) expresion -> . PARENTESIS_IZQ expresion PARENTESIS_DER
+    (9) expresion -> . NUMERO
+    (10) expresion -> . NOMBRE
+
+    NOMBRE          shift and go to state 2
+    RESTA           shift and go to state 4
+    PARENTESIS_IZQ  shift and go to state 5
+    NUMERO          shift and go to state 6
+
+    sentencia                      shift and go to state 1
+    expresion                      shift and go to state 3
+
+state 1
+
+    (0) S' -> sentencia .
+
+
+
+state 2
+
+    (1) sentencia -> NOMBRE . IGUAL expresion
+    (10) expresion -> NOMBRE .
+
+    IGUAL           shift and go to state 7
+    SUMA            reduce using rule 10 (expresion -> NOMBRE .)
+    RESTA           reduce using rule 10 (expresion -> NOMBRE .)
+    MULTIPLICACION  reduce using rule 10 (expresion -> NOMBRE .)
+    DIVISION        reduce using rule 10 (expresion -> NOMBRE .)
+    $end            reduce using rule 10 (expresion -> NOMBRE .)
+
+
+state 3
+
+    (2) sentencia -> expresion .
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULTIPLICACION expresion
+    (6) expresion -> expresion . DIVISION expresion
+
+    $end            reduce using rule 2 (sentencia -> expresion .)
+    SUMA            shift and go to state 8
+    RESTA           shift and go to state 9
+    MULTIPLICACION  shift and go to state 10
+    DIVISION        shift and go to state 11
+
+
+state 4
+
+    (7) expresion -> RESTA . expresion
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULTIPLICACION expresion
+    (6) expresion -> . expresion DIVISION expresion
+    (7) expresion -> . RESTA expresion
+    (8) expresion -> . PARENTESIS_IZQ expresion PARENTESIS_DER
+    (9) expresion -> . NUMERO
+    (10) expresion -> . NOMBRE
+
+    RESTA           shift and go to state 4
+    PARENTESIS_IZQ  shift and go to state 5
+    NUMERO          shift and go to state 6
+    NOMBRE          shift and go to state 13
+
+    expresion                      shift and go to state 12
+
+state 5
+
+    (8) expresion -> PARENTESIS_IZQ . expresion PARENTESIS_DER
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULTIPLICACION expresion
+    (6) expresion -> . expresion DIVISION expresion
+    (7) expresion -> . RESTA expresion
+    (8) expresion -> . PARENTESIS_IZQ expresion PARENTESIS_DER
+    (9) expresion -> . NUMERO
+    (10) expresion -> . NOMBRE
+
+    RESTA           shift and go to state 4
+    PARENTESIS_IZQ  shift and go to state 5
+    NUMERO          shift and go to state 6
+    NOMBRE          shift and go to state 13
+
+    expresion                      shift and go to state 14
+
+state 6
+
+    (9) expresion -> NUMERO .
+
+    SUMA            reduce using rule 9 (expresion -> NUMERO .)
+    RESTA           reduce using rule 9 (expresion -> NUMERO .)
+    MULTIPLICACION  reduce using rule 9 (expresion -> NUMERO .)
+    DIVISION        reduce using rule 9 (expresion -> NUMERO .)
+    $end            reduce using rule 9 (expresion -> NUMERO .)
+    PARENTESIS_DER  reduce using rule 9 (expresion -> NUMERO .)
+
+
+state 7
+
+    (1) sentencia -> NOMBRE IGUAL . expresion
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULTIPLICACION expresion
+    (6) expresion -> . expresion DIVISION expresion
+    (7) expresion -> . RESTA expresion
+    (8) expresion -> . PARENTESIS_IZQ expresion PARENTESIS_DER
+    (9) expresion -> . NUMERO
+    (10) expresion -> . NOMBRE
+
+    RESTA           shift and go to state 4
+    PARENTESIS_IZQ  shift and go to state 5
+    NUMERO          shift and go to state 6
+    NOMBRE          shift and go to state 13
+
+    expresion                      shift and go to state 15
+
+state 8
+
+    (3) expresion -> expresion SUMA . expresion
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULTIPLICACION expresion
+    (6) expresion -> . expresion DIVISION expresion
+    (7) expresion -> . RESTA expresion
+    (8) expresion -> . PARENTESIS_IZQ expresion PARENTESIS_DER
+    (9) expresion -> . NUMERO
+    (10) expresion -> . NOMBRE
+
+    RESTA           shift and go to state 4
+    PARENTESIS_IZQ  shift and go to state 5
+    NUMERO          shift and go to state 6
+    NOMBRE          shift and go to state 13
+
+    expresion                      shift and go to state 16
+
+state 9
+
+    (4) expresion -> expresion RESTA . expresion
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULTIPLICACION expresion
+    (6) expresion -> . expresion DIVISION expresion
+    (7) expresion -> . RESTA expresion
+    (8) expresion -> . PARENTESIS_IZQ expresion PARENTESIS_DER
+    (9) expresion -> . NUMERO
+    (10) expresion -> . NOMBRE
+
+    RESTA           shift and go to state 4
+    PARENTESIS_IZQ  shift and go to state 5
+    NUMERO          shift and go to state 6
+    NOMBRE          shift and go to state 13
+
+    expresion                      shift and go to state 17
+
+state 10
+
+    (5) expresion -> expresion MULTIPLICACION . expresion
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULTIPLICACION expresion
+    (6) expresion -> . expresion DIVISION expresion
+    (7) expresion -> . RESTA expresion
+    (8) expresion -> . PARENTESIS_IZQ expresion PARENTESIS_DER
+    (9) expresion -> . NUMERO
+    (10) expresion -> . NOMBRE
+
+    RESTA           shift and go to state 4
+    PARENTESIS_IZQ  shift and go to state 5
+    NUMERO          shift and go to state 6
+    NOMBRE          shift and go to state 13
+
+    expresion                      shift and go to state 18
+
+state 11
+
+    (6) expresion -> expresion DIVISION . expresion
+    (3) expresion -> . expresion SUMA expresion
+    (4) expresion -> . expresion RESTA expresion
+    (5) expresion -> . expresion MULTIPLICACION expresion
+    (6) expresion -> . expresion DIVISION expresion
+    (7) expresion -> . RESTA expresion
+    (8) expresion -> . PARENTESIS_IZQ expresion PARENTESIS_DER
+    (9) expresion -> . NUMERO
+    (10) expresion -> . NOMBRE
+
+    RESTA           shift and go to state 4
+    PARENTESIS_IZQ  shift and go to state 5
+    NUMERO          shift and go to state 6
+    NOMBRE          shift and go to state 13
+
+    expresion                      shift and go to state 19
+
+state 12
+
+    (7) expresion -> RESTA expresion .
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULTIPLICACION expresion
+    (6) expresion -> expresion . DIVISION expresion
+
+    SUMA            reduce using rule 7 (expresion -> RESTA expresion .)
+    RESTA           reduce using rule 7 (expresion -> RESTA expresion .)
+    MULTIPLICACION  reduce using rule 7 (expresion -> RESTA expresion .)
+    DIVISION        reduce using rule 7 (expresion -> RESTA expresion .)
+    $end            reduce using rule 7 (expresion -> RESTA expresion .)
+    PARENTESIS_DER  reduce using rule 7 (expresion -> RESTA expresion .)
+
+  ! SUMA            [ shift and go to state 8 ]
+  ! RESTA           [ shift and go to state 9 ]
+  ! MULTIPLICACION  [ shift and go to state 10 ]
+  ! DIVISION        [ shift and go to state 11 ]
+
+
+state 13
+
+    (10) expresion -> NOMBRE .
+
+    SUMA            reduce using rule 10 (expresion -> NOMBRE .)
+    RESTA           reduce using rule 10 (expresion -> NOMBRE .)
+    MULTIPLICACION  reduce using rule 10 (expresion -> NOMBRE .)
+    DIVISION        reduce using rule 10 (expresion -> NOMBRE .)
+    $end            reduce using rule 10 (expresion -> NOMBRE .)
+    PARENTESIS_DER  reduce using rule 10 (expresion -> NOMBRE .)
+
+
+state 14
+
+    (8) expresion -> PARENTESIS_IZQ expresion . PARENTESIS_DER
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULTIPLICACION expresion
+    (6) expresion -> expresion . DIVISION expresion
+
+    PARENTESIS_DER  shift and go to state 20
+    SUMA            shift and go to state 8
+    RESTA           shift and go to state 9
+    MULTIPLICACION  shift and go to state 10
+    DIVISION        shift and go to state 11
+
+
+state 15
+
+    (1) sentencia -> NOMBRE IGUAL expresion .
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULTIPLICACION expresion
+    (6) expresion -> expresion . DIVISION expresion
+
+    $end            reduce using rule 1 (sentencia -> NOMBRE IGUAL expresion .)
+    SUMA            shift and go to state 8
+    RESTA           shift and go to state 9
+    MULTIPLICACION  shift and go to state 10
+    DIVISION        shift and go to state 11
+
+
+state 16
+
+    (3) expresion -> expresion SUMA expresion .
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULTIPLICACION expresion
+    (6) expresion -> expresion . DIVISION expresion
+
+    SUMA            reduce using rule 3 (expresion -> expresion SUMA expresion .)
+    RESTA           reduce using rule 3 (expresion -> expresion SUMA expresion .)
+    $end            reduce using rule 3 (expresion -> expresion SUMA expresion .)
+    PARENTESIS_DER  reduce using rule 3 (expresion -> expresion SUMA expresion .)
+    MULTIPLICACION  shift and go to state 10
+    DIVISION        shift and go to state 11
+
+  ! MULTIPLICACION  [ reduce using rule 3 (expresion -> expresion SUMA expresion .) ]
+  ! DIVISION        [ reduce using rule 3 (expresion -> expresion SUMA expresion .) ]
+  ! SUMA            [ shift and go to state 8 ]
+  ! RESTA           [ shift and go to state 9 ]
+
+
+state 17
+
+    (4) expresion -> expresion RESTA expresion .
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULTIPLICACION expresion
+    (6) expresion -> expresion . DIVISION expresion
+
+    SUMA            reduce using rule 4 (expresion -> expresion RESTA expresion .)
+    RESTA           reduce using rule 4 (expresion -> expresion RESTA expresion .)
+    $end            reduce using rule 4 (expresion -> expresion RESTA expresion .)
+    PARENTESIS_DER  reduce using rule 4 (expresion -> expresion RESTA expresion .)
+    MULTIPLICACION  shift and go to state 10
+    DIVISION        shift and go to state 11
+
+  ! MULTIPLICACION  [ reduce using rule 4 (expresion -> expresion RESTA expresion .) ]
+  ! DIVISION        [ reduce using rule 4 (expresion -> expresion RESTA expresion .) ]
+  ! SUMA            [ shift and go to state 8 ]
+  ! RESTA           [ shift and go to state 9 ]
+
+
+state 18
+
+    (5) expresion -> expresion MULTIPLICACION expresion .
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULTIPLICACION expresion
+    (6) expresion -> expresion . DIVISION expresion
+
+    SUMA            reduce using rule 5 (expresion -> expresion MULTIPLICACION expresion .)
+    RESTA           reduce using rule 5 (expresion -> expresion MULTIPLICACION expresion .)
+    MULTIPLICACION  reduce using rule 5 (expresion -> expresion MULTIPLICACION expresion .)
+    DIVISION        reduce using rule 5 (expresion -> expresion MULTIPLICACION expresion .)
+    $end            reduce using rule 5 (expresion -> expresion MULTIPLICACION expresion .)
+    PARENTESIS_DER  reduce using rule 5 (expresion -> expresion MULTIPLICACION expresion .)
+
+  ! SUMA            [ shift and go to state 8 ]
+  ! RESTA           [ shift and go to state 9 ]
+  ! MULTIPLICACION  [ shift and go to state 10 ]
+  ! DIVISION        [ shift and go to state 11 ]
+
+
+state 19
+
+    (6) expresion -> expresion DIVISION expresion .
+    (3) expresion -> expresion . SUMA expresion
+    (4) expresion -> expresion . RESTA expresion
+    (5) expresion -> expresion . MULTIPLICACION expresion
+    (6) expresion -> expresion . DIVISION expresion
+
+    SUMA            reduce using rule 6 (expresion -> expresion DIVISION expresion .)
+    RESTA           reduce using rule 6 (expresion -> expresion DIVISION expresion .)
+    MULTIPLICACION  reduce using rule 6 (expresion -> expresion DIVISION expresion .)
+    DIVISION        reduce using rule 6 (expresion -> expresion DIVISION expresion .)
+    $end            reduce using rule 6 (expresion -> expresion DIVISION expresion .)
+    PARENTESIS_DER  reduce using rule 6 (expresion -> expresion DIVISION expresion .)
+
+  ! SUMA            [ shift and go to state 8 ]
+  ! RESTA           [ shift and go to state 9 ]
+  ! MULTIPLICACION  [ shift and go to state 10 ]
+  ! DIVISION        [ shift and go to state 11 ]
+
+
+state 20
+
+    (8) expresion -> PARENTESIS_IZQ expresion PARENTESIS_DER .
+
+    SUMA            reduce using rule 8 (expresion -> PARENTESIS_IZQ expresion PARENTESIS_DER .)
+    RESTA           reduce using rule 8 (expresion -> PARENTESIS_IZQ expresion PARENTESIS_DER .)
+    MULTIPLICACION  reduce using rule 8 (expresion -> PARENTESIS_IZQ expresion PARENTESIS_DER .)
+    DIVISION        reduce using rule 8 (expresion -> PARENTESIS_IZQ expresion PARENTESIS_DER .)
+    $end            reduce using rule 8 (expresion -> PARENTESIS_IZQ expresion PARENTESIS_DER .)
+    PARENTESIS_DER  reduce using rule 8 (expresion -> PARENTESIS_IZQ expresion PARENTESIS_DER .)
+
